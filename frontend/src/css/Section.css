@@ -1,0 +1,8 @@
+.Section {
+    background: rgb(211,211,211);
+    border-radius: 1rem;
+    color: #222;
+    padding: 2rem;
+    margin: 0;
+    font-family: "Lucida Console", "Courier New", monospace;
+}

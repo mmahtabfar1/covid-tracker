@@ -1,7 +1,9 @@
 import Map from "./components/Map";
 import StateInfo from "./components/StateInfo";
+import Title from "./components/Title.js";
+import Section from "./components/Section.js";
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./css/App.css";
 
 const App = () => {
   const [currentState, setCurrentState] = useState("United States");
@@ -11,9 +13,13 @@ const App = () => {
   }, []);
 
   return (
-    <div className="Map">
+    <div className="App">
+      <Title className="Title" />
       <Map clickHandler={setCurrentState} />
       <StateInfo state={currentState} />
+      <Section className="Section">
+          
+      </Section>
     </div>
   );
 };
