@@ -1,8 +1,10 @@
 /*
 
+first line of csv:
 date, state, fips, cases, deaths, confirmed_cases, confirmed_deaths, probable_cases, probable_deaths
 
 
+output is an object composed of the following
 {
     State: {Date:x, fips:x, cases:x, deaths:x, confirmed_cases:x, probable_cases:x, probable_deaths:x}
 }
@@ -44,7 +46,7 @@ const parseCovidData = (rawData) => {
       probable_deaths: _probable_deaths,
     };
 
-    result[_state]["color_ratio"] = _cases / (25971202 * 0.25);
+    result[_state]["color_ratio"] = _cases / (25971202 * 0.02);
   });
 
   console.log(result);
