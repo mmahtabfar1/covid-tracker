@@ -1,19 +1,19 @@
-import USAMap from "react-usa-map";
-import React, { useEffect } from "react";
+import Map from "./components/Map";
+import StateInfo from "./components/StateInfo";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 const App = () => {
+  const [currentState, setCurrentState] = useState("United States");
+
   useEffect(() => {
     document.title = "Covid-Tracker";
   }, []);
 
-  const mapHandler = () => {
-    alert("clicked a state!");
-  };
-
   return (
-    <div className="App">
-      <USAMap onClick={() => mapHandler()} />
+    <div className="Map">
+      <Map clickHandler={setCurrentState} />
+      <StateInfo state={currentState} />
     </div>
   );
 };

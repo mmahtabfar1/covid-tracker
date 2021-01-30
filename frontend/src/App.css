@@ -1,6 +1,7 @@
-.App {
+.Map {
   text-align: center;
   position: center;
+  padding-top: 50px;
 }
 
 body {
@@ -14,11 +15,6 @@ path {
 path:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
