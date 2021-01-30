@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+  position: center;
+}
+
+body {
+  background: #222;
+}
+
+path {
+  pointer-events: all;
+}
+
+path:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .App-logo {
