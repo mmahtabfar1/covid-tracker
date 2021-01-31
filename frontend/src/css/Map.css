@@ -1,0 +1,9 @@
+.Map {
+    background-color: #222;
+    color: rgb(211,211,211);
+    font-size: 35px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 30px;
+}

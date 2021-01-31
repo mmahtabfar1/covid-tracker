@@ -1,0 +1,8 @@
+.Footer h4 {
+    grid-area: footer;
+    font-size: 1px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0px 50px 100px 50px;
+}

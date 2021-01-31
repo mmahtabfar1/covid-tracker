@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import USAMap from "react-usa-map";
+import "../css/Map.css";
 
 const Map = ({ clickHandler, stateConfig }) => {
   const stateAbbreviationMap = {

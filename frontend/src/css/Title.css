@@ -1,8 +1,10 @@
 .Title h1 {
-    background: rgb(211,211,211);
+    grid-area: header;
+    background-color: rgb(211,211,211);
     color: #222;
-    padding: 1rem 2rem;
+    font-size: 35px;
+    padding: 30px;
     box-sizing: border-box;
+    text-align: center;
     margin: 0;
-    font-family: "Lucida Console", "Courier New", monospace;
 }

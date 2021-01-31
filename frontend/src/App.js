@@ -2,6 +2,7 @@ import Map from "./components/Map";
 import StateInfo from "./components/StateInfo";
 import Title from "./components/Title.js";
 import Section from "./components/Section.js";
+import Footer from "./components/Footer.js"
 import parseCovidData from "./ParseCovidData";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -34,9 +35,10 @@ const App = () => {
   return (
     <div className="App">
       <Title className="Title" />
-      <Map stateConfig={covidData} clickHandler={setCurrentState} />
+      <Map className="Map" stateConfig={covidData} clickHandler={setCurrentState} />
       <StateInfo state={currentState} />
-      <Section className="Section"></Section>
+      <Section className="Left"></Section>
+      <Footer className="Footer"></Footer>
     </div>
   );
 };
