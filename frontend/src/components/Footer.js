@@ -1,10 +1,16 @@
 import React from "react";
 import "../css/Footer.css";
 
-const Footer = () => {
+const Footer = (props) => {
     return (
-        <div className="Title">
-            <h4>Public datasets provided by NY Times and The Atlantic </h4>
+        <div className="Footer">
+            <h4>
+                Last updated: {props.date};
+                Public datasets provided by the{" "}
+                <a href={"https://github.com/nytimes/covid-19-data/tree/master/live"} style={{ cursor: 'pointer' }}>NYTimes</a>
+                {" "}and{" "}
+                <a href={"https://covidtracking.com/data"} style={{ cursor: 'pointer' }}>The Atlantic</a>
+            </h4>
         </div>
     );
 }

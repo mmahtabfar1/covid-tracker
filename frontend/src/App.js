@@ -59,7 +59,7 @@ const App = () => {
         state={currentState}
         className="Section"
       ></Section>
-      <Footer className="Footer"></Footer>
+      <Footer date={covidData_NYT["Florida"]["date"]} className="Footer"></Footer>
     </div>
   );
 };

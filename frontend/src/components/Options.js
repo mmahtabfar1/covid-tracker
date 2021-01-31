@@ -6,10 +6,9 @@ function Options() {
     
     const options = useMemo(
         () => [
-            { value: "apple", label: "Apple" },
-            { value: "banana", label: "Banana" },
-            { value: "orange", label: "Orange" },
-            { value: "berry", label: "Berry" },
+            { value: "infected", label: "Population Infected" },
+            { value: "capacity", label: "Hospital Capacity" },
+            
         ],
         []
     );
@@ -18,13 +17,13 @@ function Options() {
             option: (provided, state) => ({
                 ...provided,
                 border: "1px dotted black",
-                color: state.data.color,
+                color: "black",
                 opacity: 0.8,
                 padding: 20,
             }),
             control: (provided) => ({
                 ...provided,
-                width: 200,
+                width: 300,
                 background: "red",
             }),
             singleValue: (provided, state) => ({
