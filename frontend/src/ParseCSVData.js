@@ -10,9 +10,7 @@ output is an object composed of the following
 }
 */
 
-const parseCovidData = (rawData) => {
-  console.log(rawData);
-
+const parseCSVData = (rawData) => {
   let result = {};
   let max_cases = 0;
 
@@ -23,7 +21,6 @@ const parseCovidData = (rawData) => {
   rawData.forEach((line, index) => {
     if (index === 0) return;
     const currCases = parseInt(line.split(",")[3], 10);
-    console.log(currCases);
     max_cases = Math.max(currCases, max_cases);
   });
 
@@ -51,14 +48,10 @@ const parseCovidData = (rawData) => {
       probable_deaths: _probable_deaths,
     };
 
-    console.log(max_cases);
-
     result[_state]["color_ratio"] = _cases / max_cases;
   });
-
-  console.log(result);
 
   return result;
 };
 
-export default parseCovidData;
+export default parseCSVData;
