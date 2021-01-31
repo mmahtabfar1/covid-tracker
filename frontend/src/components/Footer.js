@@ -2,10 +2,13 @@ import React from "react";
 import "../css/Footer.css";
 
 const Footer = (props) => {
+
+    console.log(props.date)
+
     return (
         <div className="Footer">
             <h4>
-                Last updated: {props.date};
+                Last updated: {props.date && props.date["Florida"]["date"]};
                 Public datasets provided by the{" "}
                 <a href={"https://github.com/nytimes/covid-19-data/tree/master/live"} style={{ cursor: 'pointer' }}>NYTimes</a>
                 {" "}and{" "}

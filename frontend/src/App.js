@@ -11,36 +11,36 @@ import "./css/App.css";
 
 const App = () => {
   const [currentState, setCurrentState] = useState("United States");
-  const [covidData_NYT, setCovidData_NYT] = useState({});
+  const [covidData_NYT, setCovidData_NYT] = useState(null);
   const [nationData, setNationData] = useState({});
 
   useEffect(() => {
     document.title = "Covid-Tracker";
   }, []);
 
+  const getCovidData = async () => {
+    axios
+      .get(
+        "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv"
+      )
+      .then((response) => {
+        setCovidData_NYT(parseCSVData(response.data));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get("https://api.covidtracking.com/v1/us/current.json")
+      .then((response) => {
+        setNationData(response.data[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    const getCovidData = async () => {
-      axios
-        .get(
-          "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv"
-        )
-        .then((response) => {
-          setCovidData_NYT(parseCSVData(response.data));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-      axios
-        .get("https://api.covidtracking.com/v1/us/current.json")
-        .then((response) => {
-          setNationData(response.data[0]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-
     getCovidData();
   }, []);
 
@@ -59,7 +59,7 @@ const App = () => {
         state={currentState}
         className="Section"
       ></Section>
-      <Footer date={covidData_NYT["Florida"]["date"]} className="Footer"></Footer>
+      <Footer date={covidData_NYT} className="Footer"></Footer>
     </div>
   );
 };
