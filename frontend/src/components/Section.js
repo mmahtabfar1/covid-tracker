@@ -40,7 +40,7 @@ const Section = (props) => {
   //handle changing the people array depending on the drop-down selection
   useEffect(() => {
     console.log("in dropdownselection useeffect");
-    if (props.dropDownSelection === "Population Infected") {
+    if (props.dropDownSelection === "infected") {
       //leave all of the people as healthy if nothing has been selected yet
       if (
         Object.keys(selectedStateData).length === 0 &&
@@ -50,24 +50,50 @@ const Section = (props) => {
       }
 
       const count = Math.ceil(
-        (selectedStateData["positive"] || props.nationData["positive"]) /
-          populationList[selectedStateData["state"] || 320000000]
+        10 *
+          ((selectedStateData["positive"] || props.nationData["positive"]) /
+            populationList[selectedStateData["state"]] || 320000000)
       );
 
-      console.log(selectedStateData || props.nationData);
+      console.log(count);
 
       //turn the first "count" links red and the others stady black
       setPeople((prev) => {
         return prev.map((link, index) => {
           if (index < count) {
-            return HEALTHY_LINK;
+            return SICK_LINK;
           }
-          return SICK_LINK;
+          return HEALTHY_LINK;
         });
       });
-    } else if (props.dropDownSelection === "Hospital Capacity") {
+    } else if (props.dropDownSelection === "capacity") {
+      //color in red based on percentage of
+      // current hospitalization / total dead
+      //this percentage of covid patients have a severe case of covid
+
+      const count = Math.ceil(
+        10 *
+          (selectedStateData["hospitalizedCurrently"] /
+            selectedStateData["death"])
+      );
+
+      console.log(count);
+
+      setPeople((prev) => {
+        return prev.map((link, index) => {
+          if (index < count) {
+            return SICK_LINK;
+          }
+          return HEALTHY_LINK;
+        });
+      });
     }
-  }, [props.dropDownSelection]);
+  }, [
+    props.dropDownSelection,
+    selectedStateData,
+    props.nationData,
+    covidData_CTK,
+  ]);
 
   //used to select the new stateData as it is selected from the map
   useEffect(() => {
@@ -94,12 +120,27 @@ const Section = (props) => {
           );
         })}
       </div>
-      <p>
-        Current state is: {props.state}
-        50% of people in {props.state} will not have a ICU bed available to
-        them. Here's what that looks like. Cases:{" "}
-        {selectedStateData["positive"] || props.nationData["positive"]}
-      </p>
+      <div className="text">
+        <p>
+          {Math.ceil(
+            (100 *
+              (selectedStateData["positive"] || props.nationData["positive"])) /
+              (populationList[selectedStateData["state"]] || 320000000)
+          ).toString() + "%"}{" "}
+          of people in {props.state} have contracted COVID. Above is a depiction
+          of what that would look like for a line of ten people.
+        </p>
+        <p>
+          {Math.ceil(
+            (100 *
+              (selectedStateData["hospitalizedCurrently"] ||
+                props.nationData["hospitalizedCurrently"])) /
+              (selectedStateData["death"] || props.nationData["death"])
+          ).toString() + "% "}
+          of people in {props.state} who have been hospitalized with COVID have
+          passed away during their hospitalization.
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,14 +1,14 @@
 .Footer h4 {
-    grid-area: footer;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: center;
-    margin: 0px 50px 0px 50px;
+  grid-area: footer;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0px 50px 0px 50px;
 }
 
 .Footer a {
-    color: red;
+  color: red;
 }
 .Footer a:hover {
-    color: rgb(175, 0, 0);
+  color: rgb(175, 0, 0);
 }

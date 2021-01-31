@@ -1,17 +1,20 @@
 .Section {
-    background: rgb(211,211,211);
-    border-radius: 1rem;
-    color: #222;
-    padding: 2rem;
-    margin: 5px 100px 30px 100Px;
-    font-family: "Lucida Console", "Courier New", monospace;
+  background: rgb(211, 211, 211);
+  border-radius: 1rem;
+  color: #222;
+  padding: 2rem;
+  margin: 5px 100px 30px 100px;
+  font-family: "Lucida Console", "Courier New", monospace;
 }
 
-.Section div{
-    padding: 1rem;
+.Section div {
+  padding: 1rem;
+  margin: auto;
+  float: none;
+  text-align: center;
 }
 
 .Section p {
-    text-align: left;
-    padding: 2px;
+  text-align: center;
+  padding: 2px;
 }

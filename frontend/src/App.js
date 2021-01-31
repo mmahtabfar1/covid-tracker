@@ -13,9 +13,7 @@ const App = () => {
   const [currentState, setCurrentState] = useState("United States");
   const [covidData_NYT, setCovidData_NYT] = useState(null);
   const [nationData, setNationData] = useState({});
-  const [dropDownSelection, setDropDownSelection] = useState(
-    "Population Infected"
-  );
+  const [dropDownSelection, setDropDownSelection] = useState("infected");
 
   useEffect(() => {
     document.title = "Covid-Tracker";
