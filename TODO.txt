@@ -1,4 +1,2 @@
-1. get us states map to display
-2. how to get latest file from github.
-3. color in the map based on each state
-
+percent of population infected to date.
+hospital bed full percentage.

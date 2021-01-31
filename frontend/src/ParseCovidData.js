@@ -14,12 +14,17 @@ const parseCovidData = (rawData) => {
   console.log(rawData);
 
   let result = {};
+  let max_cases = 0;
 
   rawData = rawData.split("\n");
 
-  //get rid of the first line with the CSV info
-  rawData.filter((line, index) => {
-    return index !== 0;
+  //determine which state has the largest number of cases to
+  //shade in the other states as a percentage of that
+  rawData.forEach((line, index) => {
+    if (index === 0) return;
+    const currCases = parseInt(line.split(",")[3], 10);
+    console.log(currCases);
+    max_cases = Math.max(currCases, max_cases);
   });
 
   rawData.forEach((line) => {
@@ -46,7 +51,9 @@ const parseCovidData = (rawData) => {
       probable_deaths: _probable_deaths,
     };
 
-    result[_state]["color_ratio"] = _cases / (25971202 * 0.02);
+    console.log(max_cases);
+
+    result[_state]["color_ratio"] = _cases / max_cases;
   });
 
   console.log(result);
