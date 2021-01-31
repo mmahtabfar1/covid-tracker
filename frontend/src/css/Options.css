@@ -1,0 +1,15 @@
+.Options {
+  padding: 50px;
+  position: relative;
+  margin: auto;
+  align-content: center;
+  text-align: center;
+  display: center;
+}
+
+.types {
+  align-content: center;
+  text-align: center;
+  display: center;
+  padding-bottom: 15px;
+}

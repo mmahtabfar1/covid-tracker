@@ -3,6 +3,7 @@ import StateInfo from "./components/StateInfo";
 import Title from "./components/Title.js";
 import Section from "./components/Section.js";
 import Footer from "./components/Footer.js";
+import Options from "./components/Options.js";
 import parseCovidData from "./ParseCovidData";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -41,7 +42,8 @@ const App = () => {
         clickHandler={setCurrentState}
       />
       <StateInfo state={currentState} />
-      <Section state={currentState} className="Section"></Section>
+      <Options className="dropdown" />
+      <Section state={currentState} className="Section" />
       <Footer className="Footer"></Footer>
     </div>
   );

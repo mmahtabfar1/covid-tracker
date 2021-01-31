@@ -8,6 +8,11 @@
   position: center;
 }
 
+.App Options {
+  position: center;
+  text-align: center;
+}
+
 body {
   background: #222;
   font-family: "Lucida Console", "Courier New", monospace;

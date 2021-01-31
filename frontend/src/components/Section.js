@@ -27,7 +27,6 @@ const Section = (props) => {
   return (
     <div className="Section">
       <div className="flexbox-container">{people}</div>
-
       <p>
         Current stat is: {props.state}
         50% of people in {props.state} will not have a ICU bed available to
