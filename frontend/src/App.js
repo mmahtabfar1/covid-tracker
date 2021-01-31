@@ -13,6 +13,9 @@ const App = () => {
   const [currentState, setCurrentState] = useState("United States");
   const [covidData_NYT, setCovidData_NYT] = useState({});
   const [nationData, setNationData] = useState({});
+  const [dropDownSelection, setDropDownSelection] = useState(
+    "Population Infected"
+  );
 
   useEffect(() => {
     document.title = "Covid-Tracker";
@@ -53,11 +56,12 @@ const App = () => {
         clickHandler={setCurrentState}
       />
       <StateInfo state={currentState} />
-      <Options className="dropdown" />
+      <Options handler={setDropDownSelection} className="dropdown" />
       <Section
         nationData={nationData}
         state={currentState}
         className="Section"
+        dropDownSelection={dropDownSelection}
       ></Section>
       <Footer className="Footer"></Footer>
     </div>
