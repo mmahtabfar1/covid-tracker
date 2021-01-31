@@ -73,7 +73,6 @@ const Map = ({ clickHandler, stateConfig }) => {
       };
     }
 
-    console.log(result);
     return result;
   };
 

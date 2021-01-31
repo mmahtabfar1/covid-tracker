@@ -3,14 +3,15 @@ import StateInfo from "./components/StateInfo";
 import Title from "./components/Title.js";
 import Section from "./components/Section.js";
 import Footer from "./components/Footer.js";
-import parseCovidData from "./ParseCovidData";
+import parseCSVData from "./ParseCSVData";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./css/App.css";
 
 const App = () => {
   const [currentState, setCurrentState] = useState("United States");
-  const [covidData, setCovidData] = useState({});
+  const [covidData_NYT, setCovidData_NYT] = useState({});
+  const [nationData, setNationData] = useState({});
 
   useEffect(() => {
     document.title = "Covid-Tracker";
@@ -18,15 +19,25 @@ const App = () => {
 
   useEffect(() => {
     const getCovidData = async () => {
-      try {
-        const response = await axios.get(
+      axios
+        .get(
           "https://raw.githubusercontent.com/nytimes/covid-19-data/master/live/us-states.csv"
-        );
-        console.log(response.data);
-        setCovidData(parseCovidData(response.data));
-      } catch (error) {
-        console.log(error);
-      }
+        )
+        .then((response) => {
+          setCovidData_NYT(parseCSVData(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      axios
+        .get("https://api.covidtracking.com/v1/us/current.json")
+        .then((response) => {
+          setNationData(response.data[0]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     getCovidData();
@@ -37,11 +48,15 @@ const App = () => {
       <Title className="Title" />
       <Map
         className="Map"
-        stateConfig={covidData}
+        stateConfig={covidData_NYT}
         clickHandler={setCurrentState}
       />
       <StateInfo state={currentState} />
-      <Section state={currentState} className="Section"></Section>
+      <Section
+        nationData={nationData}
+        state={currentState}
+        className="Section"
+      ></Section>
       <Footer className="Footer"></Footer>
     </div>
   );
